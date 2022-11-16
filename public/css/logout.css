@@ -5,5 +5,50 @@ html{
 }
 body{
     height: 100%;
-    background: #3C4767;
+    max-width: 1024px;
+    width: 70%;
+    margin: 0 auto;
+    background: linear-gradient(0deg,#DA553D,30%,#3B4868);
+    text-align: center;
+    position: relative;
+}
+
+#container{
+    margin: 0 auto;
+    padding: 10px;
+    position: absolute;
+    display: block;
+    text-align: center;
+    flex-wrap: nowrap;
+    /* justify-content: center; */
+    background-color: rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+p{
+color: #fff;
+margin-bottom: 5px;
+}
+
+h2{
+    /* padding: 30px; */
+    text-align: center;
+}
+
+.createwrapper{
+    justify-content: center;
+    padding: 30px;
+}
+
+.form-wrapper{
+    padding-top: 50px;
+    /* padding-bottom: 30px; */
+}
+
+.form{
+    text-align: left;
+    margin-bottom: 15px;
+}
+.back{
+    padding-top: 50px;
 }

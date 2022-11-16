@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Rules\alpha_num_check;
 
 class RegisterController extends Controller
 {
@@ -49,11 +50,34 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
-        ]);
-    }
+            'username' => ['required','string','max:12','min:4'],
+            'email' => ['required','string','email','max:12','min:4','unique:users'],
+            'password' => ['required','string','min:4','max:12','confirmed','regex:/\A([a-zA-Z0-9])+\z/u'],
+            'password_confirmation' => ['required','string','min:4','max:12','regex:/\A([a-zA-Z0-9])+\z/u'],
+        ],
+    [
+        'username.required' => '必須項目です',
+        'username.min' => '4文字以上で入力してください',
+        'username.max' => '12文字以下で入力してください',
+        'email.required' => '必須項目です',
+        'email.email' => 'メールアドレスの形式ではありません',
+        'email.min' => '4文字以上で入力してください',
+        'email.max' => '12文字以下で入力してください',
+        'email.unique' => '登録済みのアドレスです',
+        'password.required' =>'必須項目です',
+        'password.min' => '4文字以上で入力してください',
+        'password.max' => '12文字以下で入力してください',
+        'password.unique' => '使用されているパスワードです',
+        'password_.same' => 'パスワードと不一致です',
+        'password.regex' =>'半角英数字で入力してください',
+        'password_confirmation.required' =>'必須項目です',
+        'password_confirmation.min' => '4文字以上で入力してください',
+        'password_confirmation.max' => '12文字以下で入力してください',
+        'password_confirmation.unique' => '使用されているパスワードです',
+        'password_confirmation.regex' =>'半角英数字で入力してください',
+        'password_confirmation.same' => 'パスワードと不一致です',
+    ])->validate();
+}
 
     /**
      * Create a new user instance after a valid registration.
@@ -63,9 +87,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        dd($data);
         return User::create([
             'username' => $data['username'],
-            'mail' => $data['mail'],
+            'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -78,11 +103,12 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-
+            $this->validator($data);
             $this->create($data);
             return redirect('added');
         }
         return view('auth.register');
+
     }
 
     public function added(){

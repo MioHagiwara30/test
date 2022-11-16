@@ -5,8 +5,72 @@ body{
 }
 /* header */
 header{
+    background: url("../images/main_logo.png") no-repeat left top;
     background:#3C4767;
+
 }
+.header-wrapper{display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo{flex-grow: 6;}
+
+.header-username{flex-grow: 1;}
+
+.gnavi_wrap{flex-grow: 1;}
+/* 
+.menu > li.menu__single {
+    position: relative;
+}
+
+.menu__second-level {
+    display: none;
+}
+
+li.menu__single ul.menu__second-level {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    background: #072A24;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+li.menu__single:hover ul.menu__second-level {
+    top: 50px;
+    display: block;
+
+} */
+
+/* 
+.gnavi_lists{
+    position: relative;
+    transition: all .3s;
+}
+
+.gnavi_list{
+    display: block;
+}
+
+.dropdown_lists {
+    display: none;/*デフォルトでは非表示の状態にしておく*/
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+/* }
+.gnavi_list:hover .dropdown_lists {
+    display: block;/*Gナビメニューにホバーしたら表示*/
+/* }
+.dropdown_list {
+    height: 60px;
+    transition: all .3s;
+    position: relative;
+    background:#3C4767;
+} */ */ */
+
 
 /* main content */
 #row{
@@ -14,8 +78,13 @@ header{
     flex-flow: row wrap;
 }
 #container{
+    max-width: 1024px;
+    width: 90%;
+    margin:0 auto;
     flex: 0 0 80%;
 }
+
+
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;

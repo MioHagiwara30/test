@@ -22,17 +22,38 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+            <div class=header-wrapper>
+            <div class=header-logo>
+               <h1><a><img src="images/main_logo.png"></a></h1>
             </div>
+            <!-- <div id="">
+                <div id=""> -->
+            <div class=header-username>
+               <p>〇〇さん<img src="images/dawn.png"></p>
+            </div>
+                 <div class=gnavi_wrap>
+
+                 <ul class="menu">
+    <li class="menu__single">
+        <a href="#" class="init-bottom">Menu single</a>
+        <ul class="menu__second-level">
+            <li><a href="/top">ホーム</a></li>
+            <li><a href="/profile">プロフィール</a></li>
+            <li><a href="/logout">ログアウト</a></li>
+        </ul>
+    </li>
+                   <!-- <ul class=gnavi_lists>
+                           <li class=gnavi_list>
+                             <a href="#">▼</a>
+                              <ul class=dropdown_lists>
+                                <li class=dropdown_list><a href="/top">ホーム</a></li>
+                                <li class=dropdown_list><a href="/profile">プロフィール</a></li>
+                                <li class=dropdown_list><a href="/logout">ログアウト</a></li>
+                              </ul>
+                            </li>
+                    </ul> -->
+                  </div>
+            <!-- </div> -->
         </div>
     </header>
     <div id="row">
