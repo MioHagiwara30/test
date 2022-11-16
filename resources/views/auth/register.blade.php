@@ -2,7 +2,8 @@
 
 @section('content')
 
-<div class="createwrapper">
+<div class="blackwrapper">
+<div class="insidewrapper">
 
 {!! Form::open(['url'=>'/create']) !!}
 
@@ -10,7 +11,7 @@
 
 <div class="form-wrapper">
 
-<div class="form">
+<div class="name box">
 <p>UserName</p>
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input','size' => 30,'placeholder' => 'dawntown']) }}
@@ -21,7 +22,7 @@
 <br>
 </div>
 
-<div class="form">
+<div class="mail box">
 <p>MailAdress</p>
 {{ Form::label('メールアドレス') }}
 {{ Form::text('email',null,['class' => 'input','size' => 30,'placeholder' => 'dawn@dawn.jp']) }}
@@ -32,7 +33,7 @@
 <br>
 </div>
 
-<div class="form">
+<div class="pass box">
 <p>Password</p>
 {{ Form::label('パスワード') }}
 {{ Form::text('password',null,['class' => 'input','size' => 30,'placeholder' => '新規パスワード']) }}
@@ -43,7 +44,7 @@
 <br>
 </div>
 
-<div class="form">
+<div class="repass box">
 <p>Password confirm</p>
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password_confirmation',null,['class' => 'input','size' => 30,'placeholder' => '新規パスワード再入力']) }}
@@ -55,13 +56,15 @@
 
 </div>
 
-<br>
+<div class="submit">
 {{ Form::submit('RESISTER') }}
+</div>
 
 <p class="back"><a href="/login">ログイン画面へ戻る</a></p>
 
 {!! Form::close() !!}
 
-
+</div>
+</div>
 
 @endsection

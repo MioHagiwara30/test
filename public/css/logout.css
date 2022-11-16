@@ -10,45 +10,74 @@ body{
     margin: 0 auto;
     background: linear-gradient(0deg,#D95642,#D95642 5%,#404865 40%,#3C4866);
     text-align: center;
-    position: relative;
 }
 
 #container{
-    margin: 0 auto;
-    padding: 10px;
-    position: absolute;
-    display: block;
     text-align: center;
+    display: block;
     flex-wrap: nowrap;
-    /* justify-content: center; */
-    background-color: rgba(0,0,0,0.3);
-    color: #fff;
 }
 
+.logo{
+padding-top: 100px;
+width: 150px;
+}
+
+.blackwrapper{
+    z-index: 1;
+    padding: 50px;
+    /* position: relative; */
+    width: 30%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.2);
+    color: #fff;
+
+}
+.insidewrapper{
+    z-index: 2;
+    /* position: absolute; */
+    width: 90%;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+.form-wrapper{
+    padding-top: 30px;
+    width: 70%;
+    /* margin: 0 auto; */
+    /* padding-bottom: 30px; */
+}
 p{
 color: #fff;
-margin-bottom: 5px;
+margin-bottom: 5px;font-size: 1rem;
 }
 
 h2{
-    /* padding: 30px; */
-    text-align: center;
+    color: #fff;
+    font-size: large;
 }
+
 
 .createwrapper{
     justify-content: center;
     padding: 30px;
 }
 
-.form-wrapper{
-    padding-top: 50px;
-    /* padding-bottom: 30px; */
-}
 
-.form{
+
+.box{
     text-align: left;
     margin-bottom: 15px;
 }
+
+.submit{
+    text-align: right;
+}
+
 .back{
     padding-top: 50px;
+}
+
+a:visited{
+    color: rgb(213, 213, 213);
 }
