@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="blackwrapper">
-<div class="insidewrapper">
+<div class="black-wrapper">
+<div class="register-wrapper">
 
 {!! Form::open() !!}
 
@@ -11,8 +11,9 @@
 
 <div class="form-wrapper">
 
+<div class="left-wrapper">
 <div class="name box">
-<p>UserName</p>
+<p class="left-text">UserName</p>
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input','size' => 30,'placeholder' => 'dawntown']) }}
 
@@ -23,7 +24,7 @@
 </div>
 
 <div class="mail box">
-<p>MailAdress</p>
+<p class="left-text">MailAdress</p>
 {{ Form::label('メールアドレス') }}
 {{ Form::text('mail',null,['class' => 'input','size' => 30,'placeholder' => 'dawn@dawn.jp']) }}
 
@@ -34,7 +35,7 @@
 </div>
 
 <div class="pass box">
-<p>Password</p>
+<p class="left-text">Password</p>
 {{ Form::label('パスワード') }}
 {{ Form::text('password',null,['class' => 'input','size' => 30,'placeholder' => '新規パスワード']) }}
 
@@ -45,7 +46,7 @@
 </div>
 
 <div class="repass box">
-<p>Password confirm</p>
+<p class="left-text">Password confirm</p>
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password_confirmation',null,['class' => 'input','size' => 30,'placeholder' => '新規パスワード再入力']) }}
 
@@ -53,13 +54,13 @@
 <p>{{ $errors->first('password_confirmation')}}</p>
 @endif
 </div>
-
 </div>
 
-<div class="submit">
+<div class="submit btn">
 {{ Form::submit('RESISTER') }}
 </div>
 
+</div>
 <p class="back"><a href="/login">ログイン画面へ戻る</a></p>
 
 {!! Form::close() !!}

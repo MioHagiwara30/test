@@ -9,7 +9,7 @@ body{
     width: 70%;
     margin: 0 auto;
     background: linear-gradient(0deg,#D95642,#D95642 5%,#404865 40%,#3C4866);
-    text-align: center;
+
 }
 
 #container{
@@ -23,56 +23,125 @@ padding-top: 100px;
 width: 150px;
 }
 
-.blackwrapper{
+p{
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    /* margin-bottom: 10px; */
+    }
+    
+    h2{
+        color: #fff;
+        font-size: large;
+        margin-bottom: 10px;
+    }
+
+.black-wrapper{
     z-index: 1;
-    padding: 50px;
-    /* position: relative; */
-    width: 30%;
+    padding: 10px;
+    width: 35%;
     margin: 0 auto;
     background-color: rgba(0,0,0,0.2);
     color: #fff;
 
 }
-.insidewrapper{
+
+.register-wrapper{
     z-index: 2;
-    /* position: absolute; */
     width: 90%;
+    /* padding: 30px; */
     margin: 0 auto;
-    /* text-align: center; */
+    text-align: center;
+}
+
+.left-wrapper{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.input{
+    text-align: left;
+    margin: 0 auto;
+}
+
+.left-text{
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 5px;
+
+}
+
+.box{
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 .form-wrapper{
     padding-top: 30px;
-    width: 70%;
+    /* width: 90%; */
     /* margin: 0 auto; */
     /* padding-bottom: 30px; */
 }
-p{
-color: #fff;
-margin-bottom: 5px;font-size: 1rem;
+
+
+/* addのみ */
+.added-wrapper{
+    z-index: 2;
+    /* width: 90%; */
+    /* padding: 10px; */
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-h2{
-    color: #fff;
-    font-size: large;
+.clear-wrapper{
+    /* width: 90%; */
+    margin: 0 auto;
 }
 
+.button-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
 
-.createwrapper{
+.home-btn{
+    background-color: #0a458a;
+    width: 50%;
+    height: 30px;
+    color: #FFFFFF;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px; 
+}
+
+/* addのみ */
+
+
+
+
+
+.create-wrapper{
     justify-content: center;
     padding: 30px;
 }
 
 
-
-.box{
-    text-align: left;
-    margin-bottom: 15px;
-}
-
 .submit{
     text-align: right;
 }
+
+
+
+.btn{
+
+}
+
 
 .back{
     padding-top: 50px;

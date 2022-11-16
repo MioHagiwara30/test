@@ -6,8 +6,8 @@
 <br>
 <br>
 <br>
-<div class="blackwrapper">
-  <div class="insidewrapper">
+<div class="black-wrapper">
+  <div class="inside-wrapper">
 
 {!! Form::open() !!}
 
@@ -28,7 +28,7 @@
 </div>
 
 
-<div class="submit">
+<div class="submit btn">
 {{ Form::submit('ログイン') }}
 </div>
 
