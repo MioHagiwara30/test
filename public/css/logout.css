@@ -8,7 +8,7 @@ body{
     max-width: 1024px;
     width: 70%;
     margin: 0 auto;
-    background: linear-gradient(0deg,#DA553D,30%,#3B4868);
+    background: linear-gradient(0deg,#D95642,#D95642 5%,#404865 40%,#3C4866);
     text-align: center;
     position: relative;
 }
