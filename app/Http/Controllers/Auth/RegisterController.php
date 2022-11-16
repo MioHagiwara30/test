@@ -51,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'username' => ['required','string','max:12','min:4'],
-            'email' => ['required','string','email','max:12','min:4','unique:users'],
+            'mail' => ['required','string','email','max:12','min:4','unique:users'],
             'password' => ['required','string','min:4','max:12','confirmed','regex:/\A([a-zA-Z0-9])+\z/u'],
             'password_confirmation' => ['required','string','min:4','max:12','regex:/\A([a-zA-Z0-9])+\z/u'],
         ],
@@ -59,11 +59,11 @@ class RegisterController extends Controller
         'username.required' => '必須項目です',
         'username.min' => '4文字以上で入力してください',
         'username.max' => '12文字以下で入力してください',
-        'email.required' => '必須項目です',
-        'email.email' => 'メールアドレスの形式ではありません',
-        'email.min' => '4文字以上で入力してください',
-        'email.max' => '12文字以下で入力してください',
-        'email.unique' => '登録済みのアドレスです',
+        'mail.required' => '必須項目です',
+        'mail.email' => 'メールアドレスの形式ではありません',
+        'mail.min' => '4文字以上で入力してください',
+        'mail.max' => '12文字以下で入力してください',
+        'mail.unique' => '登録済みのアドレスです',
         'password.required' =>'必須項目です',
         'password.min' => '4文字以上で入力してください',
         'password.max' => '12文字以下で入力してください',
@@ -87,10 +87,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+
         return User::create([
             'username' => $data['username'],
-            'email' => $data['email'],
+            'mail' => $data['mail'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -101,8 +101,10 @@ class RegisterController extends Controller
     // }
 
     public function register(Request $request){
+        // dd($request);
         if($request->isMethod('post')){
             $data = $request->input();
+            // dd($data);
             $this->validator($data);
             $this->create($data);
             return redirect('added');

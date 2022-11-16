@@ -5,7 +5,7 @@
 <div class="blackwrapper">
 <div class="insidewrapper">
 
-{!! Form::open(['url'=>'/create']) !!}
+{!! Form::open() !!}
 
 <h2>新規ユーザー登録</h2>
 
@@ -25,10 +25,10 @@
 <div class="mail box">
 <p>MailAdress</p>
 {{ Form::label('メールアドレス') }}
-{{ Form::text('email',null,['class' => 'input','size' => 30,'placeholder' => 'dawn@dawn.jp']) }}
+{{ Form::text('mail',null,['class' => 'input','size' => 30,'placeholder' => 'dawn@dawn.jp']) }}
 
-@if($errors->has('email'))
-<p>{{ $errors->first('email')}}</p>
+@if($errors->has('mail'))
+<p>{{ $errors->first('mail')}}</p>
 @endif
 <br>
 </div>
