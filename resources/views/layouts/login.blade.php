@@ -23,46 +23,37 @@
     <header>
         <div id = "head">
             <div class=header-wrapper>
-            <div class=header-logo>
-               <h1><a><img src="images/main_logo.png"></a></h1>
-            </div>
+               <div class=header-logo>
+                <h1><a><img src="images/main_logo.png"></a></h1>
+               </div>
             <!-- <div id="">
                 <div id=""> -->
-            <div class=header-username>
-               <p>〇〇さん<img src="images/dawn.png"></p>
-            </div>
+               <div class=header-username>
+                <p>{{ session('username') }}さん<img src="images/dawn.png"></p>
+               </div>
                  <div class=gnavi_wrap>
 
                  <ul class="menu">
-    <li class="menu__single">
-        <a href="#" class="init-bottom">Menu single</a>
-        <ul class="menu__second-level">
-            <li><a href="/top">ホーム</a></li>
-            <li><a href="/profile">プロフィール</a></li>
-            <li><a href="/logout">ログアウト</a></li>
-        </ul>
-    </li>
-                   <!-- <ul class=gnavi_lists>
-                           <li class=gnavi_list>
-                             <a href="#">▼</a>
-                              <ul class=dropdown_lists>
-                                <li class=dropdown_list><a href="/top">ホーム</a></li>
-                                <li class=dropdown_list><a href="/profile">プロフィール</a></li>
-                                <li class=dropdown_list><a href="/logout">ログアウト</a></li>
-                              </ul>
-                            </li>
-                    </ul> -->
+                    <li class="menu__single">
+                     <a href="#" class="init-bottom">Menu single</a>
+                      <ul class="menu__second-level">
+                        <li><a href="/top">ホーム</a></li>
+                        <li><a href="/profile">プロフィール</a></li>
+                        <li><a href="/logout">ログアウト</a></li>
+                      </ul>
+                     </li>
                   </div>
             <!-- </div> -->
-        </div>
+                </div>
     </header>
     <div id="row">
+        <div id="main-wrapper">
         <div id="container">
             @yield('content')
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{ session('username') }}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
@@ -75,6 +66,7 @@
                 <p class="btn"><a href="">フォロワーリスト</a></p>
             </div>
             <p class="btn"><a href="">ユーザー検索</a></p>
+        </div>
         </div>
     </div>
     <footer>

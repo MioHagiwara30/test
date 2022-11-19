@@ -23,8 +23,13 @@
 <body>
     <div id="container">
        <header>
-         <h1><img class="logo" src="images/main_logo.png"></h1>
+         <!-- <h1><img class="logo" src="images/main_logo.png" a href="{{asset('/resources/views/auth/login.blade.php')}}"></h1> -->
+
+         <a href="{{URL::to('/logout')}}"><img src="images/main_logo.png" alt="ロゴ画像"></a>
         </header>
+
+        <p>ログアウトしました</p>
+
 
          @yield('content')
      </div>
