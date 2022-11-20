@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -38,11 +39,33 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'mail' => ['required','string','email','max:12','min:4','unique:users'],
+            'password' => ['required','string','min:4','max:12','confirmed','regex:/\A([a-zA-Z0-9])+\z/u'],
+        ],
+    [
+        'mail.required' => '必須項目です',
+        'mail.email' => 'メールアドレスの形式ではありません',
+        'mail.min' => '4文字以上で入力してください',
+        'mail.max' => '12文字以下で入力してください',
+        'mail.unique' => '登録済みのアドレスです',
+        'password.required' =>'必須項目です',
+        'password.min' => '4文字以上で入力してください',
+        'password.max' => '12文字以下で入力してください',
+        'password.unique' => '使用されているパスワードです',
+        'password_.same' => 'パスワードと不一致です',
+        'password.regex' =>'半角英数字で入力してください',
+    ])->validate();
+}
     
     public function login(Request $request){
         if($request->isMethod('post')){
             
             $data=$request->only('mail','password');
+            $this->validator($data);
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
@@ -53,7 +76,8 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        return view("auth.login");
+        Auth::logout();
+        return redirect('/login');
     }
     
 }

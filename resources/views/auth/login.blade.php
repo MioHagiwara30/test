@@ -17,13 +17,19 @@
 <div class="name box">
 <p>MailAdress</p>
 <!-- {{ Form::label('mailAdress') }}<br> -->
-{{ Form::text('mail',null,['class' => 'input','size' => 30]) }}
+{{ Form::text('mail',null,['class' => 'input','size' => 30,'placeholder' => 'dawn@dawn.jp']) }}
+@if($errors->has('mail'))
+<p>{{ $errors->first('mail')}}</p>
+@endif
 </div>
 
 <div class="pass box">
 <p>Password</p>
 <!-- {{ Form::label('password') }}<br> -->
-{{ Form::password('password',['class' => 'input','size' => 30]) }}
+{{ Form::password('password',['class' => 'input','size' => 30,'placeholder' => 'パスワード']) }}
+@if($errors->has('password'))
+<p>{{ $errors->first('password')}}</p>
+@endif
 </div>
 </div>
 
