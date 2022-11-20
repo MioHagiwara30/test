@@ -29,7 +29,7 @@
             <!-- <div id="">
                 <div id=""> -->
                <div class=header-username>
-                <p>{{ session('username') }}さん<img src="images/dawn.png"></p>
+                <p>{{ Auth::user()->username }}さん<img src="images/dawn.png"></p>
                </div>
                  <div class=gnavi_wrap>
 
@@ -53,7 +53,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{ session('username') }}さんの</p>
+                    <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
