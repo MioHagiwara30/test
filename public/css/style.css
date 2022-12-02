@@ -78,6 +78,54 @@ li.menu__single:hover ul.menu__second-level {
     flex-flow: row wrap;
 }
 
+/* サイドバー部分 */
+#side-bar{
+    /* flex: 0 0 19%; */
+    border-left: 1px solid #6C6C6C;
+    max-width: 1024px;
+    width: 20%;
+  background-color: #faa;
+}
+
+#confirm{
+    padding: 10px;
+}
+
+.member-list{
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+
+.btn-wrapper{
+    text-align: right;
+}
+
+.f-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.fl{
+height: 10px;
+width: 90px;
+}
+
+
+
+
+#search{
+    border-top:  1px solid #6C6C6C;
+    padding-top: 20px;
+    text-align: center;
+}
+/* サイドバー部分ここまで */
+
+
+
+
 #main-wrapper{
     width: 100%;
   margin: 0 auto;
@@ -85,19 +133,101 @@ li.menu__single:hover ul.menu__second-level {
   justify-content: space-between;
 }
 
+
+/* 上の呟き部分 */
+
 #container{
-    /* max-width: 1024px;
-    width: 90%;
-    margin:0 auto;
-    flex: 0 0 80%; */
     width: 80%;
-    background-color: #ccc;
+    background-color: #fff;
+    text-align: left;
+}
+
+.tweet-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid #ccc;
+}
+
+.tweet-wrapper-inside{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.icon-tweet{
+    width: 70px;
+    height: 70px;
+
+}
+
+.graytext{
+    color: rgb(180, 179, 179);
+    padding: 10px;
+    text-align: left;
+margin-right: 300px;
+
+}
+
+.icon-sent{
+margin-top: 40px;
+    width: 30px;
+    height: 30px;
+
+}
+/* 上の呟き部分ここまで */
+
+
+.timeline-wrapper{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    background-color: royalblue;
+}
+
+.timeline-table{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    padding: 10px;
+    background-color: pink;
+    border-collapse: separate;
+    border-spacing: 20px;
 }
 
 
-#side-bar{
-    /* flex: 0 0 19%; */
-    border-left: 1px solid #6C6C6C;
-    width: 20%;
-  background-color: #faa;
+.btn,
+a.btn {
+  color: #fff;
+  background-color: #3C4866;
+  font-size: 5px;
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
+}
+
+.btn:hover,
+a.btn:hover {
+  color: rgb(14, 13, 13);
+  background: #5e6c8d;
+  font-size: 5px;
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
 }

@@ -26,7 +26,35 @@
 </head>
 <body>
 
-<h2>機能を実装していきましょう。</h2>
+<div class='container'>
+
+  <div class="tweet-wrapper">
+  <div class="tweet-wrapper-inside">
+   <img class="icon-tweet" src="images/dawn.png">
+   <p class="graytext">何をつぶやこうか…？</p>
+   <a href="post/create-form"><img class="icon-sent" src="images/post.png"></a>
+
+
+   </div>
+  </div>
+
+</div>
+
+<div class="timeline-wrapper">
+<table class="timeline-table">
+
+@foreach($posts as $post)
+<tr>
+    <th>{{ $post -> user_id }}</th>
+    <th>{{ $post -> posts }}</th>
+</tr>
+@endforeach
+
+</table>
+
+</div>
+
+
 
 </body>
 </html>
