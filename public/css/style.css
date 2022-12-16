@@ -188,13 +188,64 @@ margin-top: 40px;
 
 .timeline-table{
     width: 100%;
-    margin: 0 auto;
-    display: flex;
     justify-content:center;
-    padding: 10px;
     background-color: pink;
-    border-collapse: separate;
-    border-spacing: 20px;
+    border-bottom: 3px solid #ccc;
+
+}
+
+
+.detailgroup{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.tweetgroup{
+    width: 100%;
+    border-bottom: 1px solid rgb(114, 114, 114);
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* 
+th{
+    padding: 10px;
+} */
+
+.tweet_username{
+    padding-top: 20px;
+    padding-left: 130px;
+    font-size: 13px;
+}
+
+
+.tweet_time{
+    padding-top: 20px;
+    padding-left: 60%;
+    font-size: 13px;
+}
+
+
+.tweet_tweet{
+    padding-top: 5px;
+    padding-left: 130px;
+    padding-bottom: 40px;
+width: 65%;
+}
+
+.icon-edit{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+
+}
+.icon-delete{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
 }
 
 

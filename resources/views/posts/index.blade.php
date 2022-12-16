@@ -41,13 +41,22 @@
 </div>
 
 <div class="timeline-wrapper">
-<table class="timeline-table">
+<table class="timeline-table" >
 
 @foreach($posts as $post)
-<tr>
-    <th>{{ $post -> user_id }}</th>
-    <th>{{ $post -> posts }}</th>
-</tr>
+
+ <tr class="detailgroup">
+ <th><img class="icon-tweet" src="images/dawn.png"></th>
+       <th class="tweet_username">{{ $post -> username }}</th>
+       <th class="tweet_time">{{ $post -> created_at }}</th>
+ </tr>
+ <tr class="tweetgroup">
+       <th class="tweet_tweet">{{ $post -> posts }}</th>
+       <th> <a class="edit-btn" href="post/{{ $post->id }}/update-form"><img class="icon-edit" src="images/edit.png"></a></th>
+       <th> <a class="delete-btn" href="post/{{ $post->id }}/delete" onclick="return confirm('この投稿を削除しますか？')"><img class="icon-delete" src="images/trash.png"></a> </th> 
+ </tr>
+
+
 @endforeach
 
 </table>

@@ -37,8 +37,31 @@ Route::get('profile','UsersController@profile');
 
 Route::get('search','UsersController@index');
 
-Route::get('follow-list','PostsController@index');
-Route::get('follower-list','PostsController@index');
+
+//postにアクセスされたら
+Route::get('post','PostsController@showTimeLine');
+
+
+//投稿ボタン押したらツイート画面へ
+Route::get('post/create-form','PostsController@createForm');
+
+//新規ツイート画面から投稿
+Route::post('post/create','PostsController@create');
+
+//編集画面へ飛ぶ
+Route::get('post/{id}/update-form','PostsController@updateForm');
+
+//編集する
+Route::post('post/update','PostsController@update');
+
+
+//ホームからツイート削除
+Route::get('post/{id}/delete','PostsController@delete');
+
+
+//フォロー・フォロワーリストへ飛ぶ
+Route::get('follow-list','PostsController@follow');
+Route::get('follower-list','PostsController@follower');
 
 
 Route::get('logout','Auth\LoginController@logout');
