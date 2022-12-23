@@ -72,7 +72,7 @@
                 </div>
              </div>
              <div id="search">
-              <p class="fl btn" href="">ユーザー検索</></p>
+              <a class="fl btn" href="search-page">ユーザー検索</a>
              </div>
          </div>
     </div>

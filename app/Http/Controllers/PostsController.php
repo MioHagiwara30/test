@@ -16,6 +16,8 @@ class PostsController extends Controller
          $posts = DB::table('posts')
          ->join('users','posts.user_id','=','users.id')
          ->select('posts.*','users.username','users.images')
+         ->orderBy('posts.created_at', 'DESC')
+         ->take(5)
           ->get();
         return view('posts.index',['posts' =>$posts]);
     }
@@ -31,31 +33,14 @@ class PostsController extends Controller
 
 
 
-protected function validator(array $data)
-{
-    return Validator::make($data, [
-        'tweet' => ['required','string','min:1','max:280'],
-    ],
-[
-    'tweet.required' => '必須項目です',
-    'tweet.max' => '140文字以下で入力してください',
-])->validate();
-}
-
-
-   //タイムライン部分
-   public function showTimeLine(){
-    $posts = DB::table('posts')
-    ->join('users','posts.user_id','=','user_id')
-    ->select('posts.*')
-     ->get();
-   return view('posts.app',['posts' =>$posts]);
-}
-
 
 
 //ツイート部分の機能
 public function create(Request $request){
+    $request->validate([
+        'newPost' => ['required','max:150']
+    ]);
+
 $posts = $request->input('newPost');
 $user_id = Auth::user()->id;
 $created_at = Carbon::now();
@@ -66,12 +51,6 @@ DB::table('posts')->insert([
 ]);
         return redirect('top');
 }
-
-//ホームからツイート内容作成画面へ飛ぶ
-public function createForm()
-    {
-        return view('posts.app');
-    }
 
 
 //ホームからツイート内容編集画面へ飛ぶ
@@ -112,6 +91,25 @@ public function delete($id)
     public function follower(){
         return view('follows.followerList');
     }
+
+    //ユーザー検索ページへ
+    public function searchPage(){
+            $users = DB::table('users')
+            ->select('users.username','users.images')
+             ->get();
+           return view('users.search',['users' =>$users]);
+       }
+
+    //ユーザー検索
+       public function search(Request $request){
+        $keyword = $request->input('keyword');
+        $users = DB::table('users')
+        ->where('username','like',"%{$keyword}%")
+        ->get();
+
+        return view('users.search', ['keyword' =>$keyword,'users' =>$users]);
+}
+
 
 //__________________________________________
 

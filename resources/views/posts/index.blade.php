@@ -26,13 +26,19 @@
 </head>
 <body>
 
-<div class='container'>
+<div id='container'>
 
   <div class="tweet-wrapper">
   <div class="tweet-wrapper-inside">
    <img class="icon-tweet" src="images/dawn.png">
-   <p class="graytext">何をつぶやこうか…？</p>
-   <a href="post/create-form"><img class="icon-sent" src="images/post.png"></a>
+
+   <div class="form-group">
+   <form action="/post/create" method="post">
+  @csrf
+<textarea name="newPost" placeholder="何をつぶやこうか…？" required></textarea>
+</div>
+<input type="submit" value="検索">
+</form>
 
 
    </div>

@@ -42,9 +42,6 @@ Route::get('search','UsersController@index');
 Route::get('post','PostsController@showTimeLine');
 
 
-//投稿ボタン押したらツイート画面へ
-Route::get('post/create-form','PostsController@createForm');
-
 //新規ツイート画面から投稿
 Route::post('post/create','PostsController@create');
 
@@ -62,6 +59,13 @@ Route::get('post/{id}/delete','PostsController@delete');
 //フォロー・フォロワーリストへ飛ぶ
 Route::get('follow-list','PostsController@follow');
 Route::get('follower-list','PostsController@follower');
+
+
+//ユーザー検索画面へ飛ぶ
+Route::get('search-page','PostsController@searchPage');
+
+//ユーザー検索をする
+Route::post('search','PostsController@search');
 
 
 Route::get('logout','Auth\LoginController@logout');
