@@ -122,7 +122,15 @@ p{
 
 /* addのみ */
 
-
+/* サイドバー部分 */
+#side-bar{
+    /* flex: 0 0 19%; */
+    border-left: 1px solid #6C6C6C;
+    max-width: 1024px;
+    width: 20%;
+    height: 100vh;
+  background-color: #faa;
+}
 
 
 

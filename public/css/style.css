@@ -13,6 +13,7 @@ header{
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    margin-left: 40px;
 }
 
 .header-logo{flex-grow: 6;}
@@ -84,6 +85,7 @@ li.menu__single:hover ul.menu__second-level {
     border-left: 1px solid #6C6C6C;
     max-width: 1024px;
     width: 20%;
+    height: 100vh;
   background-color: #faa;
 }
 
@@ -137,9 +139,10 @@ width: 90px;
 /* 上の呟き部分 */
 
 #container{
-    width: 80%;
+    width: 100%;
     background-color: #fff;
     text-align: left;
+    margin-left: 40px;
 }
 
 .tweet-wrapper{
@@ -150,32 +153,42 @@ width: 90px;
 }
 
 .tweet-wrapper-inside{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin: 20px;
+        margin: 20px;
 }
 
 .icon-tweet{
     width: 70px;
     height: 70px;
-
 }
 
-.graytext{
-    color: rgb(180, 179, 179);
-    padding: 10px;
-    text-align: left;
-margin-right: 300px;
-
+.form{
+    width: 300px;
 }
+
+
+.form-control{
+    width: 600px;
+}
+
 
 .icon-sent{
-margin-top: 40px;
+margin-top: 20px;
+margin-left: 600px;
     width: 30px;
     height: 30px;
 
 }
 /* 上の呟き部分ここまで */
+
+
+/* 呟き入力フォームの見た目 */
+.form-control{
+    padding: 20px;
+    outline: none;
+    border: none;
+}
 
 
 .timeline-wrapper{
@@ -194,18 +207,16 @@ margin-top: 40px;
 
 }
 
-
 .detailgroup{
     width: 100%;
-    padding: 10px;
     display: flex;
     flex-wrap: nowrap;
 }
 
+
 .tweetgroup{
     width: 100%;
     border-bottom: 1px solid rgb(114, 114, 114);
-    padding: 10px;
     display: flex;
     flex-wrap: nowrap;
 }
@@ -215,23 +226,23 @@ th{
     padding: 10px;
 } */
 
+
 .tweet_username{
     padding-top: 20px;
-    padding-left: 130px;
+    padding-left: 5%;
     font-size: 13px;
 }
 
 
 .tweet_time{
     padding-top: 20px;
-    padding-left: 60%;
+    padding-left: 500px;
     font-size: 13px;
 }
 
 
 .tweet_tweet{
-    padding-top: 5px;
-    padding-left: 130px;
+    padding-left: 12%;
     padding-bottom: 40px;
 width: 65%;
 }
@@ -282,3 +293,23 @@ a.btn:hover {
   letter-spacing: 0.1em;
   border-radius: 0.5rem;
 }
+
+/* ユーザー検索画面 */
+
+.user_search_wrapper{
+    width: 100%;
+    border-bottom: 1px solid rgb(114, 114, 114);
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 30px;
+}
+
+
+.user_list_wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 20px;
+}
+
+.
