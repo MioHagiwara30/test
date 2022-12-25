@@ -22,9 +22,6 @@ class PostsController extends Controller
         return view('posts.index',['posts' =>$posts]);
     }
 
-    public function profile(){
-        return view('users.profile');
-    }
 
 
     public function login(){
@@ -84,23 +81,36 @@ public function delete($id)
 }
 
 
-    public function follow(){
+    public function followlist(){
         return view('follows.followList');
     }
 
-    public function follower(){
+    public function followerlist(){
         return view('follows.followerList');
     }
+
+    //フォローする
+    public function follow($id){
+    $my_id = Auth::id();
+    $created_at = Carbon::now();
+    DB::table('follows')->insert([
+        'follow'=> $id,
+        'follower'=> $my_id,
+        'created_at'=> $created_at,
+    ]);
+       return back();
+    }
+
 
     //ユーザー検索ページへ
     public function searchPage(){
             $users = DB::table('users')
-            ->select('users.username','users.images')
+            ->select('users.username','users.images','users.id')
              ->get();
            return view('users.search',['users' =>$users]);
        }
 
-    //ユーザー検索
+    //ユーザー検索実行
        public function search(Request $request){
         $keyword = $request->input('keyword');
         $users = DB::table('users')
@@ -110,10 +120,40 @@ public function delete($id)
         return view('users.search', ['keyword' =>$keyword,'users' =>$users]);
 }
 
+    //ユーザープロフィールへ
+    public function profile($id){
+        $posts = DB::table('posts')
+        ->where('id',$id)
+        ->select('posts.posts')
+        ->orderBy('posts.created_at', 'DESC')
+        ->take(5)
+        ->get();
+
+        $users = DB::table('users')
+        ->where('users.id',$id)
+        ->join('posts','users.id','=','posts.user_id')
+        ->select('users.username','users.images','users.bio')
+         ->get();
+
+       return view('users.profile',['users' =>$users,'posts'=> $posts]);
+   }
+
+
+
+   public function myProfile(){
+    $auths = Auth::user();
+    return view('users.myprofile');
+}
+
+
+
 
 //__________________________________________
 
     public function logout(){
+        $user_id = Auth::user()->id;
+
+
         return view('layouts.logout');
     }
 

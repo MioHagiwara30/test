@@ -142,7 +142,6 @@ width: 90px;
     width: 100%;
     background-color: #fff;
     text-align: left;
-    margin-left: 40px;
 }
 
 .tweet-wrapper{
@@ -155,18 +154,29 @@ width: 90px;
 .tweet-wrapper-inside{
     width: 100%;
     display: flex;
-        margin: 20px;
+        margin: 10px;
 }
 
 .icon-tweet{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.form-group{
+    margin: 20px;
 }
 
 .form{
     width: 300px;
 }
 
+/* 検索ボタン（共通） */
+.search{
+    width: 40px;
+    height: 25px;
+}
 
 .form-control{
     width: 600px;
@@ -228,23 +238,23 @@ th{
 
 
 .tweet_username{
-    padding-top: 20px;
-    padding-left: 5%;
+    padding-top: 30px;
+    padding-left: 3%;
     font-size: 13px;
 }
 
 
 .tweet_time{
-    padding-top: 20px;
-    padding-left: 500px;
+    padding-top: 30px;
+    padding-left: 400px;
     font-size: 13px;
 }
 
 
 .tweet_tweet{
-    padding-left: 12%;
+    padding-left: 14%;
     padding-bottom: 40px;
-width: 65%;
+    width: 65%;
 }
 
 .icon-edit{
@@ -312,4 +322,38 @@ a.btn:hover {
     padding: 20px;
 }
 
-.
+/* 自分のプロフィール画面 */
+
+.myprofile-wrapper{
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    margin-top: 30px;
+    background-color: rgb(173, 203, 199);
+}
+
+.myprofile1{
+flex-grow: 1;
+margin: 10px;
+}
+.myprofile2{
+    flex-grow: 2; 
+    margin: 10px;
+    text-align: left;
+}
+.myprofile3{
+    flex-grow: 5;
+    margin: 10px;
+    text-align: left;
+}
+
+.myprofile-container{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.newprofile{
+
+    }

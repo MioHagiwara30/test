@@ -57,8 +57,12 @@ Route::get('post/{id}/delete','PostsController@delete');
 
 
 //フォロー・フォロワーリストへ飛ぶ
-Route::get('follow-list','PostsController@follow');
-Route::get('follower-list','PostsController@follower');
+Route::get('follow-list','PostsController@followlist');
+Route::get('follower-list','PostsController@followerlist');
+
+
+//ユーザーをフォローする
+Route::get('post/{id}/follow','PostsController@follow');
 
 
 //ユーザー検索画面へ飛ぶ
@@ -67,6 +71,11 @@ Route::get('search-page','PostsController@searchPage');
 //ユーザー検索をする
 Route::post('search','PostsController@search');
 
+//他のユーザーのプロフィールを表示
+Route::get('post/{id}/profile','PostsController@profile');
+
+//自分のプロフィールを表示
+Route::get('myprofile','PostsController@myProfile');
 
 Route::get('logout','Auth\LoginController@logout');
 
