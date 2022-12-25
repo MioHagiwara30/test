@@ -37,7 +37,7 @@
   @csrf
 <textarea name="newPost" placeholder="何をつぶやこうか…？" required></textarea>
 </div>
-<input type="submit" value="検索">
+<input type="submit" class="search" value="検索">
 </form>
 
 

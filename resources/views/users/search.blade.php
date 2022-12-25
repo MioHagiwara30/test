@@ -37,9 +37,10 @@
 <table class="user_list_wrapper">
   @foreach ($users as $user)
     <tr class="userlisttable">
-       <th><img class="icon-tweet" src="{{ $user -> images }}"></th>
+       <th><a href="post/{{ $user -> id }}/profile">
+        <img src={{asset($user -> images)}}></a></th>
        <th a class="username">{{ $user -> username }}</th>
-       <th a class="user-follow btn" href="follower-list">フォローする</th></p>
+       <th a class="user-follow btn" href="post/{{ $user -> id}}/follow">フォローする</th></p>
     </tr>
   @endforeach
 
