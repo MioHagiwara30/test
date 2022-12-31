@@ -62,8 +62,10 @@ Route::get('follower-list','PostsController@followerlist');
 
 
 //ユーザーをフォローする
-Route::get('post/{id}/follow','PostsController@follow');
+Route::post('follow/create','FollowsController@follow');
 
+//ユーザーフォローを外す
+Route::post('follow/delete','FollowsController@unfollow');
 
 //ユーザー検索画面へ飛ぶ
 Route::get('search-page','PostsController@searchPage');

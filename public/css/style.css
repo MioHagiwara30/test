@@ -184,8 +184,7 @@ width: 90px;
 
 
 .icon-sent{
-margin-top: 20px;
-margin-left: 600px;
+margin-top: 65px;
     width: 30px;
     height: 30px;
 
@@ -320,6 +319,15 @@ a.btn:hover {
     display: flex;
     flex-wrap: nowrap;
     padding: 20px;
+}
+
+.a_username,{
+margin: 10px;
+}
+
+.a_follow{
+    margin: 10px;
+margin-left: 100px;
 }
 
 /* 自分のプロフィール画面 */

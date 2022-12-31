@@ -39,8 +39,28 @@
     <tr class="userlisttable">
        <th><a href="post/{{ $user -> id }}/profile">
         <img src={{asset($user -> images)}}></a></th>
-       <th a class="username">{{ $user -> username }}</th>
-       <th a class="user-follow btn" href="post/{{ $user -> id}}/follow">フォローする</th></p>
+       <th a class="a_username" >{{ $user -> username }}</th>
+       <th>
+
+       <!-- $followings=フォロワーに自分のidが入っているもの -->
+       <form action="/follow/delete" class="a_username" method="post">
+        @if($followings->contains('follow',$user->id))
+        @csrf
+          <input type="hidden"  name="id" value="{{$user -> id }}">
+          <input type="submit" class="a_follow" value="フォローを外す">
+        </form>
+        @elseif($user->id==$auth->id)
+
+        @else
+        <form action="/follow/create" class="a_username" method="post">
+          @csrf
+          <input type="hidden" name="id" value="{{$user -> id }}">
+          <input type="submit" class="a_follow" value="フォローする">
+        </form>
+        @endif
+
+       </th>
+
     </tr>
   @endforeach
 

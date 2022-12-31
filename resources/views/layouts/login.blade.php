@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link href="{{secure_asset('/assets/css/style.css')}}" rel="stylesheet">
-    <link href="{{secure_asset('/assets/css/reset.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/reset.css')}}" rel="stylesheet">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -57,14 +57,14 @@
                     <div class="member-list">
                 <div class="f-wrapper">
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>$follow_count名</p>
                 </div>
                 <div class="btn-wrapper">
                 <a class="fl btn" href="follow-list">フォローリスト</a></p>
                 </div>
                 <div class="f-wrapper">
                   <p>フォロワー数</p>
-                  <p>〇〇名</p>
+                  <p>$follower_count名</p>
                 </div>
                 <div class="btn-wrapper">
                   <a class="fl btn" href="follower-list">フォロワーリスト</a></p>

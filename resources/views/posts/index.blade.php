@@ -35,9 +35,9 @@
    <div class="form-group">
    <form action="/post/create" method="post">
   @csrf
-<textarea name="newPost" placeholder="何をつぶやこうか…？" required></textarea>
+<textarea name="newPost" placeholder="何をつぶやこうか…？" style="width:350px; height:70px;" required></textarea>
 </div>
-<input type="submit" class="search" value="検索">
+<input type="image" class="icon-sent" src=images/post.png>
 </form>
 
 
@@ -58,10 +58,12 @@
  </tr>
  <tr class="tweetgroup">
        <th class="tweet_tweet">{{ $post -> posts }}</th>
-       <th> <a class="edit-btn" href="post/{{ $post->id }}/update-form"><img class="icon-edit" src="images/edit.png"></a></th>
-       <th> <a class="delete-btn" href="post/{{ $post->id }}/delete" onclick="return confirm('この投稿を削除しますか？')"><img class="icon-delete" src="images/trash.png"></a> </th> 
- </tr>
 
+@if($post->user_id==$auth->id)
+       <th> <a class="edit-btn" href="post/{{ $post->id }}/update-form"><img class="icon-edit" src="images/edit.png"></a></th>
+       <th> <a class="delete-btn" href="post/{{ $post->id }}/delete" onclick="return confirm('この投稿を削除しますか？')"><img class="icon-delete" src="images/trash.png"></a> </th>
+@endif
+ </tr>
 
 @endforeach
 

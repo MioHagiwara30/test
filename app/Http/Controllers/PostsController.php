@@ -19,17 +19,35 @@ class PostsController extends Controller
          ->orderBy('posts.created_at', 'DESC')
          ->take(5)
           ->get();
-        return view('posts.index',['posts' =>$posts]);
+        $auth = Auth::user();
+        $follower_count=DB::table('follows')
+        ->where('follower', $auth)
+        ->count('follower');
+        $follow_count=DB::table('follows')
+        ->where('follower', $auth)
+        ->count('follow');
+        return view('posts.index',['posts' =>$posts,'auth' =>$auth,'follower_count'=>$follower_count,'follow_count'=>$follow_count]);
     }
 
 
+    public function getTweetCount(Int $user_id)
+    {
+        $login_user = auth()->user();
+        $is_following = $login_user->isFollowing($user->id);
+        return $this->where('user_id', $user_id)->count();
+    }
+
+    public function getFollowerCount($user_id)
+    {
+        $login_user = auth()->user();
+        $is_followed = $login_user->isFollowed($user->id);
+        return $this->where('followed_id', $user_id)->count();
+    }
+    
 
     public function login(){
         return view('layouts.login');
     }
-
-
-
 
 
 //ツイート部分の機能
@@ -89,25 +107,17 @@ public function delete($id)
         return view('follows.followerList');
     }
 
-    //フォローする
-    public function follow($id){
-    $my_id = Auth::id();
-    $created_at = Carbon::now();
-    DB::table('follows')->insert([
-        'follow'=> $id,
-        'follower'=> $my_id,
-        'created_at'=> $created_at,
-    ]);
-       return back();
-    }
-
 
     //ユーザー検索ページへ
     public function searchPage(){
+            $auth = Auth::user();
             $users = DB::table('users')
             ->select('users.username','users.images','users.id')
              ->get();
-           return view('users.search',['users' =>$users]);
+             $followings=DB::table('follows')
+             ->where('follower',Auth::id())
+             ->get();
+           return view('users.search',['auth'=>$auth,'users' =>$users,'followings' =>$followings]);
        }
 
     //ユーザー検索実行
@@ -116,8 +126,11 @@ public function delete($id)
         $users = DB::table('users')
         ->where('username','like',"%{$keyword}%")
         ->get();
+        $followings=DB::table('follows')
+        ->where('follower',Auth::id())
+        ->get();
 
-        return view('users.search', ['keyword' =>$keyword,'users' =>$users]);
+        return view('users.search', ['keyword' =>$keyword,'users' =>$users,'followings' =>$followings]);
 }
 
     //ユーザープロフィールへ
