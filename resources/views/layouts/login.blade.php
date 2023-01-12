@@ -21,30 +21,44 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-            <div class=header-wrapper>
-               <div class=header-logo>
-                <h1><a href="top"><img src="images/main_logo.png"></a></h1>
-               </div>
-            <!-- <div id="">
-                <div id=""> -->
-               <div class=header-username>
-                <p>{{ Auth::user()->username }}さん<img src="images/dawn.png"></p>
-               </div>
-                 <div class=gnavi_wrap>
+        <div class=header-wrapper>
+            <div class=header-logo>
+              <a href="/top"><img class="header-logo-img" src="{{asset('images/main_logo.png')}}"></a>
+            </div>
 
-                 <ul class="menu">
-                    <li class="menu__single">
-                     <a href="#" class="init-bottom">Menu single</a>
-                      <ul class="menu__second-level">
-                        <li><a href="/top">ホーム</a></li>
-                        <li><a href="/myprofile">プロフィール</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
-                      </ul>
-                     </li>
-                  </div>
-            <!-- </div> -->
+            <div class="header-wrapper2">
+              <div class=header-username>
+                <div class="white">
+                 <p>{{ Auth::user()->username }} さん</p>
                 </div>
+                 <div class="gnavi_wrap">
+                  <ul class="gnavi_lists">
+                   <li class="navi_home">
+                    <div class="menu-triangle"> > </div>
+                  
+                    <script>$(function(){
+                      $('.menu-triangle').hover(function(){$(this).toggleClass('active');});
+                      $('.gnavi-lists ul li a').click(function(){$('.menu-triangle').removeClass('active');})
+                      });
+                    </script>
+                    <ul class="dropdown_lists">
+                        <li class="inside_menu"><a class="extendbutton" href="/top">ホーム</a></li>
+                        <li class="inside_menu"><a class="extendbutton" href="/myprofile">プロフィール</a></li>
+                        <li class="inside_menu"><a class="extendbutton" href="/logout">ログアウト</a></li>
+                      </ul>
+                   </li>
+                  </ul>
+                 </div>
+
+                 <img class="top_icon" src="{{asset('images/dawn.png')}}">
+                </div>
+                </div>
+
+                </div>
+               </div>
+
+               </div>
+
     </header>
     <div id="row">
         <div id="main-wrapper">
@@ -53,26 +67,26 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                    <p>{{ Auth::user()->username }}さんの</p>
+                    <p class="gray">{{ Auth::user()->username }}さんの</p>
                     <div class="member-list">
                 <div class="f-wrapper">
-                <p>フォロー数</p>
-                <p>$follow_count名</p>
+                <p class="gray">フォロー数</p>
+                <p class="gray"> {{$follow_count}} 名</p>
                 </div>
                 <div class="btn-wrapper">
-                <a class="fl btn" href="follow-list">フォローリスト</a></p>
+                <a class="fl btn" href="/follow-list">フォローリスト</a></p>
                 </div>
                 <div class="f-wrapper">
-                  <p>フォロワー数</p>
-                  <p>$follower_count名</p>
+                  <p class="gray">フォロワー数</p>
+                  <p class="gray"> {{$follower_count}} 名</p>
                 </div>
                 <div class="btn-wrapper">
-                  <a class="fl btn" href="follower-list">フォロワーリスト</a></p>
+                  <a class="fl btn" href="/follower-list">フォロワーリスト</a></p>
                 </div>
                 </div>
              </div>
              <div id="search">
-              <a class="fl btn" href="search-page">ユーザー検索</a>
+              <a class="fl btn" href="/search-page">ユーザー検索</a>
              </div>
          </div>
     </div>
