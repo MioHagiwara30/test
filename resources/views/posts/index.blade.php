@@ -2,30 +2,6 @@
 
 @section('content')
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-    <!--IEブラウザ対策-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="ページの内容を表す文章" />
-    <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!--スマホ,タブレット対応-->
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <!--サイトのアイコン指定-->
-    <link rel="icon" href="画像URL" sizes="16x16" type="image/png" />
-    <link rel="icon" href="画像URL" sizes="32x32" type="image/png" />
-    <link rel="icon" href="画像URL" sizes="48x48" type="image/png" />
-    <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
-    <!--iphoneのアプリアイコン指定-->
-    <link rel="apple-touch-icon-precomposed" href="画像のURL" />
-    <!--OGPタグ/twitterカード-->
-</head>
-<body>
-
 <div id='container'>
 
   <div class="tweet-wrapper">
@@ -59,10 +35,53 @@
  <tr class="tweetgroup">
        <th class="tweet_tweet">{{ $post -> posts }}</th>
 
+       <!-- 編集ボタン -->
 @if($post->user_id==$auth->id)
-       <th> <a class="edit-btn" href="post/{{ $post->id }}/update-form"><img class="icon-edit" src="images/edit.png"></a></th>
+       <th> <a href="" class="modalopen" data-target="modal_01">
+       {!! Form::input('hidden','id',$post->user_id, ['required', 'class' => 'form-control']) !!}
+        <img class="icon-edit" src="images/edit.png"></a>
+        {!! Form::close() !!}
+       </th>
+       </div>
+             <!-- モーダル 中身-->
+  <div class="modal_hidden js-modal" id="modal_01">
+   <div class="modal-inner">
+    <div class="inner-content">
+    <div class='container'>
+        <h2 class='page-header'>投稿内容の編集</h2>
+        {!! Form::open(['url' => 'post/update']) !!}
+        <div class="form-group">
+        {!! Form::input('hidden','id',$post->user_id, ['required', 'class' => 'form-control']) !!}
+            {!! Form::input('text','upPost',$post->posts, ['required', 'class' => 'form-control']) !!}
+        </div>
+        <button type="submit" class="btn btn-success pull-right">編集</button>
+        {!! Form::close() !!}
+    </div>
+      <a class="send-button modalClose" href="top">Close</a>
+    </div>
+  </div>
+
+<!-- モーダル中身ここまで -->
+
+<script>
+jQuery(function ($) {
+  $('.modalopen').on('click', function () {
+      console.log(modal);
+      $(modal).fadeIn();
+      return false;
+    });
+  });
+  $('.modalClose').on('click', function () {
+    $('.js-modal').fadeOut();
+    return false;
+  });
+});
+
+</script>
+
+<!-- 削除ボタン -->
        <th> <a class="delete-btn" href="post/{{ $post->id }}/delete" onclick="return confirm('この投稿を削除しますか？')"><img class="icon-delete" src="images/trash.png"></a> </th>
-@endif
+       @endif
  </tr>
 
 @endforeach
@@ -71,9 +90,5 @@
 
 </div>
 
-
-
-</body>
-</html>
 
 @endsection

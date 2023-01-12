@@ -12,6 +12,7 @@ use Carbon\Carbon;
 class PostsController extends Controller
 {
     //
+
     public function index(){
          $posts = DB::table('posts')
          ->join('users','posts.user_id','=','users.id')
@@ -21,29 +22,20 @@ class PostsController extends Controller
           ->get();
         $auth = Auth::user();
         $follower_count=DB::table('follows')
-        ->where('follower', $auth)
-        ->count('follower');
+        ->join('users','follows.follower','=','users.id')
+        ->where('follow',Auth::id())
+        ->select('users.username','users.images','users.id','follows.follower')
+        ->count();
         $follow_count=DB::table('follows')
-        ->where('follower', $auth)
-        ->count('follow');
+        ->join('users','follows.follow','=','users.id')
+        ->where('follower',Auth::id())
+        ->select('users.username','users.images','users.id','follows.follow')
+        ->count();
+
         return view('posts.index',['posts' =>$posts,'auth' =>$auth,'follower_count'=>$follower_count,'follow_count'=>$follow_count]);
     }
 
 
-    public function getTweetCount(Int $user_id)
-    {
-        $login_user = auth()->user();
-        $is_following = $login_user->isFollowing($user->id);
-        return $this->where('user_id', $user_id)->count();
-    }
-
-    public function getFollowerCount($user_id)
-    {
-        $login_user = auth()->user();
-        $is_followed = $login_user->isFollowed($user->id);
-        return $this->where('followed_id', $user_id)->count();
-    }
-    
 
     public function login(){
         return view('layouts.login');
@@ -69,13 +61,13 @@ DB::table('posts')->insert([
 
 
 //ホームからツイート内容編集画面へ飛ぶ
-public function updateForm($id)
-    {
-        $posts = DB::table('posts')
-        ->where('id',$id)
-        ->first();
-        return view('posts.updateForm',['posts'=> $posts]);
-    }
+// public function updateForm($id)
+//     {
+//         $posts = DB::table('posts')
+//         ->where('id',$id)
+//         ->first();
+//         return view('posts.updateForm',['posts'=> $posts]);
+//     }
 
     //ツイート内容編集画面から編集内容を登録
 public function update(Request $request)
@@ -99,14 +91,6 @@ public function delete($id)
 }
 
 
-    public function followlist(){
-        return view('follows.followList');
-    }
-
-    public function followerlist(){
-        return view('follows.followerList');
-    }
-
 
     //ユーザー検索ページへ
     public function searchPage(){
@@ -117,7 +101,19 @@ public function delete($id)
              $followings=DB::table('follows')
              ->where('follower',Auth::id())
              ->get();
-           return view('users.search',['auth'=>$auth,'users' =>$users,'followings' =>$followings]);
+
+             $follower_count=DB::table('follows')
+             ->join('users','follows.follower','=','users.id')
+             ->where('follow',Auth::id())
+             ->select('users.username','users.images','users.id','follows.follower')
+             ->count();
+             $follow_count=DB::table('follows')
+             ->join('users','follows.follow','=','users.id')
+             ->where('follower',Auth::id())
+             ->select('users.username','users.images','users.id','follows.follow')
+             ->count();
+
+           return view('users.search',['auth'=>$auth,'users' =>$users,'followings' =>$followings,'follower_count'=>$follower_count,'follow_count'=>$follow_count]);
        }
 
     //ユーザー検索実行
@@ -130,35 +126,110 @@ public function delete($id)
         ->where('follower',Auth::id())
         ->get();
 
-        return view('users.search', ['keyword' =>$keyword,'users' =>$users,'followings' =>$followings]);
+        $follower_count=DB::table('follows')
+        ->join('users','follows.follower','=','users.id')
+        ->where('follow',Auth::id())
+        ->select('users.username','users.images','users.id','follows.follower')
+        ->count();
+        $follow_count=DB::table('follows')
+        ->join('users','follows.follow','=','users.id')
+        ->where('follower',Auth::id())
+        ->select('users.username','users.images','users.id','follows.follow')
+        ->count();
+
+        return view('users.search', ['keyword' =>$keyword,'users' =>$users,'followings' =>$followings,'follower_count'=>$follower_count,'follow_count'=>$follow_count]);
 }
 
-    //ユーザープロフィールへ
+    //他人のユーザープロフィールへ
     public function profile($id){
-        $posts = DB::table('posts')
+
+        $user =DB::table('users')
         ->where('id',$id)
-        ->select('posts.posts')
+        ->first();
+
+        $posts = DB::table('posts')
+        ->join('users','posts.user_id','=','users.id')
+        ->where('posts.user_id',$id)
+        ->select('posts.*','users.username','users.images')
         ->orderBy('posts.created_at', 'DESC')
         ->take(5)
-        ->get();
-
-        $users = DB::table('users')
-        ->where('users.id',$id)
-        ->join('posts','users.id','=','posts.user_id')
-        ->select('users.username','users.images','users.bio')
          ->get();
 
-       return view('users.profile',['users' =>$users,'posts'=> $posts]);
+         $followings=DB::table('follows')
+         ->where('follower',Auth::id())
+         ->get();
+
+         $followings=DB::table('follows')
+         ->where('follower',Auth::id())
+         ->get();
+
+         $follower_count=DB::table('follows')
+         ->join('users','follows.follower','=','users.id')
+         ->where('follow',Auth::id())
+         ->select('users.username','users.images','users.id','follows.follower')
+         ->count();
+         $follow_count=DB::table('follows')
+         ->join('users','follows.follow','=','users.id')
+         ->where('follower',Auth::id())
+         ->select('users.username','users.images','users.id','follows.follow')
+         ->count();
+
+       return view('users.profile',['user'=>$user,'posts'=>$posts,'followings' =>$followings,'follower_count'=>$follower_count,'follow_count'=>$follow_count]);
    }
 
 
-
+   //自分のプロフィール画面
    public function myProfile(){
     $auths = Auth::user();
-    return view('users.myprofile');
+
+    $follower_count=DB::table('follows')
+    ->join('users','follows.follower','=','users.id')
+    ->where('follow',Auth::id())
+    ->select('users.username','users.images','users.id','follows.follower')
+    ->count();
+    $follow_count=DB::table('follows')
+    ->join('users','follows.follow','=','users.id')
+    ->where('follower',Auth::id())
+    ->select('users.username','users.images','users.id','follows.follow')
+    ->count();
+
+    return view('users.myprofile',['follower_count'=>$follower_count,'follow_count'=>$follow_count]);
 }
 
 
+   //自分のプロフィール画面から編集内容を登録
+   public function pfUpdateForm(Request $request)
+   {
+    $auth = Auth::user();
+    $username=$request->username;
+    $mail=$request->mail;
+    $bio=$request->bio;
+    if(request('newpassword')){
+        $newpassword= bcrypt($request->newpassword);
+    }else{
+        $newpassword=DB::table('users')
+        ->where('id',Auth::id())
+        ->value('password');
+    }
+    if(request('iconimage')){
+        $imagename=$request->iconimage->getClientOriginalName();
+        $request->iconimage->storeAs('public/images',$imagename);
+    }else{
+
+    }
+
+    DB::table('users')
+    ->where('id',Auth::id())
+    ->update([
+        'username'=>$username,
+        'mail'=>$mail,
+        'newpassword'=>$newpassword,
+        'bio'=>$bio,
+        'images'=>$imagename,
+    ]);
+
+       return redirect('top');
+   }
 
 
 //__________________________________________
