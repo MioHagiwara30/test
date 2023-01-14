@@ -7,7 +7,11 @@ body{
 header{
     background: url("../images/main_logo.png") no-repeat left top;
     background:#3C4767;
+}
 
+button{
+    border: none;
+    background-color: transparent;
 }
 
 .gray{
@@ -69,6 +73,7 @@ z-index: 3;
 
 .menu-triangle,
 a.menu-triangle{
+    display: block;
     position: absolute;
     rotate: 90deg;
     color: #fff;
@@ -79,7 +84,7 @@ a.menu-triangle{
 a.menu-triangle.active{
     display: block;
     position: absolute;
-    rotate: 180deg;
+    rotate: 270deg;
     color: #fff;
     transition: .35s ease-in-out;
 }
@@ -90,6 +95,7 @@ a.menu-triangle.active{
     display: none;
 }
 
+/* ドロップダウンメニューと＞部分両方含むグループ */
 .navi_home{
     list-style: none;
     display: block;
@@ -309,12 +315,6 @@ margin-top: 65px;
     flex-wrap: nowrap;
 }
 
-/* 
-th{
-    padding: 10px;
-} */
-
-
 .tweet_username{
     padding-top: 30px;
     padding-left: 3%;
@@ -339,7 +339,10 @@ th{
     width: 30px;
     height: 30px;
     padding: 10px;
+    cursor: pointer;
 }
+
+
 
 .abc{
     position: relative;
@@ -365,7 +368,6 @@ a.icon-delete:hover{
     display: inline-block;
     cursor: pointer;
     transition: all 0.3s;
-    background:url("../images/trash_h.png")
 }
 
 .btn,
@@ -383,6 +385,9 @@ a.btn {
   text-decoration: none;
   letter-spacing: 0.1em;
   border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  appearance: none;
 }
 
 .btn:hover,
@@ -400,9 +405,44 @@ a.btn:hover {
   text-decoration: none;
   letter-spacing: 0.1em;
   border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  appearance: none;
 }
 
+/* ツイート編集画面のモーダル中身 */
 
+
+.tweet_update_container{
+    background-color: #fff;
+    display: block;
+    width: 420px;
+    height: 180px;
+
+}
+
+/* 編集枠を囲うdivクラス */
+.update-inner{
+margin-left: 30px;
+margin-top: 20px;
+
+}
+
+.icon-edit2{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 330px;
+}
+
+.modal-edit{
+    background: url(images/edit.png);
+}
+
+.modalClosetext{
+    text-align: center;
+}
 
 .modal_hidden{ /* ① モーダルウィンドウを非表示にする。*/
     display: none;

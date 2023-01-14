@@ -18,6 +18,8 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <script src= "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{asset('js/style.js')}}"></script>
 </head>
 <body>
     <header>
@@ -34,13 +36,8 @@
                  <div class="gnavi_wrap">
                   <ul class="gnavi_lists">
                    <li class="navi_home">
-                    <div class="menu-triangle"> > </div>
-                  
-                    <script>$(function(){
-                      $('.menu-triangle').hover(function(){$(this).toggleClass('active');});
-                      $('.gnavi-lists ul li a').click(function(){$('.menu-triangle').removeClass('active');})
-                      });
-                    </script>
+                    <a class="menu-triangle"> > </a>
+
                     <ul class="dropdown_lists">
                         <li class="inside_menu"><a class="extendbutton" href="/top">ホーム</a></li>
                         <li class="inside_menu"><a class="extendbutton" href="/myprofile">プロフィール</a></li>
@@ -92,7 +89,6 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+
 </body>
 </html>
