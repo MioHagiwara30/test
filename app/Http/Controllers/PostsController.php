@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Carbon\Carbon;
@@ -11,7 +12,7 @@ use Carbon\Carbon;
 
 class PostsController extends Controller
 {
-    //
+
 
     public function index(){
          $posts = DB::table('posts')
@@ -72,11 +73,15 @@ DB::table('posts')->insert([
     //ツイート内容編集画面から編集内容を登録
 public function update(Request $request)
 {
+    $request->validate(['upPost' => ['required','max:150']
+                       ]);
+
     $id = $request->input('id');
     $up_post = $request->input('upPost');
     DB::table('posts')
     ->where('id',$id)
     ->update(['posts'=> $up_post]);
+
     return redirect('top');
 }
 
@@ -223,7 +228,7 @@ public function delete($id)
     ->update([
         'username'=>$username,
         'mail'=>$mail,
-        'newpassword'=>$newpassword,
+        'password'=>$newpassword,
         'bio'=>$bio,
         'images'=>$imagename,
     ]);
